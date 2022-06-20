@@ -1,0 +1,8 @@
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\obj\Debug\Framwork.csproj.AssemblyReference.cache
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\obj\Debug\Framwork.csproj.CoreCompileInputs.cache
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\bin\Debug\Framwork.dll
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\bin\Debug\Framwork.pdb
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\obj\Debug\Framwork.dll
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\obj\Debug\Framwork.pdb
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\bin\Debug\EZInput.dll
+D:\UET\Second Semester\OOP Lab\GameProject\Escape\Framwork\obj\Debug\Framwork.csproj.CopyComplete
