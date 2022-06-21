@@ -12,30 +12,35 @@ namespace Framwork.Core
 {
     public class Game : IGame
     {
+        private Point boundary;
         private static List<Collision> collisionList = new List<Collision>();
         private static List<GameObject> gameObjList = new List<GameObject>();
-        private static List<GameObject> bulletsList = new List<GameObject>();
+
 
         public static List<GameObject> GameObjList { get => gameObjList; set => gameObjList = value; }
         public static List<Collision> CollisionList { get => collisionList; set => collisionList = value; }
-        public static List<GameObject> BulletsList { get => bulletsList; set => bulletsList = value; }
+        public Point Boundary { get => boundary; set => boundary = value; }
 
-        public event EventHandler OnPlayerAdd;
         public event EventHandler OnBulletDel;
+        public event EventHandler OnPlayerAdd;
         public event EventHandler OnPlayerDie;
-        public Game ()
-        {
+        public event EventHandler OnPlayerCollideScore;
 
+        public Game (Point boundary)
+        {
+            this.Boundary = boundary;
         }
         public void update ()
         {
-            foreach (GameObject pb in GameObjList)
+            for (int i = 0 ; i < GameObjList.Count ; i++)
             {
-                pb.move();
-                if (pb.Type == objectTypes.player)
+                detectCollision();
+                GameObjList[i].move();
+                if (GameObjList[i].Type == objectTypes.player)
                 {
-                    Player x = (Player)pb;
+                    Player x = (Player)GameObjList[i];
                     x.fireBullet();
+                    // x.rmvBullet(this);
                 }
 
             }
@@ -56,8 +61,14 @@ namespace Framwork.Core
         }
         public void RaisePlayerDieEvent (GameObject playerGameObject)
         {
-            OnPlayerDie?.Invoke(playerGameObject , EventArgs.Empty);
+            OnPlayerDie?.Invoke(playerGameObject.Pb , EventArgs.Empty);
         }
+        public void RaiseOnPlayerCollideScoreEvent (GameObject playerGameObject)
+        {
+            OnPlayerCollideScore?.Invoke(playerGameObject.Pb , EventArgs.Empty);
+            GameObjList.Remove(playerGameObject);
+        }
+
         public void detectCollision ()
         {
             for (int x = 0 ; x < gameObjList.Count ; x++)
@@ -70,7 +81,8 @@ namespace Framwork.Core
                         {
                             if (gameObjList[x].Type == c.G1 && gameObjList[y].Type == c.G2)
                             {
-                                c.Behaviour.performAction(this , gameObjList[x] , gameObjList[y]);
+                                //c.Behaviour.performPlayerEnemyCollision(this , gameObjList[x] , gameObjList[y]);
+                                c.Behaviour.performPlayerScoreCollision(this , gameObjList[x] , gameObjList[y]);
                             }
                         }
                     }

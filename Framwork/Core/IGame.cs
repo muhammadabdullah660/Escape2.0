@@ -10,7 +10,7 @@ namespace Framwork.Core
     {
         // void RaisePlayerHitEvent (GameObject obj);
         void RaisePlayerDieEvent (GameObject obj);
-        // void RaiseEnemyDieEvent (GameObject obj);
+        void RaiseOnPlayerCollideScoreEvent (GameObject obj);
         // void RaisePlayerBulletRemove (GameObject obj);
     }
 }

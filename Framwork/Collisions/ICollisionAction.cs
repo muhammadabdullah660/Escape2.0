@@ -11,6 +11,7 @@ namespace Framwork.Collisions
 {
     public interface ICollisionAction
     {
-        void performAction (IGame game , GameObject source1 , GameObject source2);
+        void performPlayerScoreCollision (IGame game , GameObject g1 , GameObject g2);
+        void performPlayerEnemyCollision (IGame game , GameObject g1 , GameObject g2);
     }
 }

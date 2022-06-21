@@ -11,42 +11,42 @@ namespace Framwork.Movement
     public class Keyboard : IMovement
     {
         private int speed;
-        private int offSet;
+        private int offSetH;
+        private int offSetV;
         private System.Drawing.Point boundary;
-        private string arrowAction;
-        public Keyboard (int speed , System.Drawing.Point boundary , int offSet)
+        public Keyboard (int speed , System.Drawing.Point boundary , int offSetH , int offSetV)
         {
             this.speed = speed;
             this.boundary = boundary;
-            this.offSet = offSet;
-            arrowAction = null;
+            this.offSetH = offSetH;
+            this.offSetV = offSetV;
         }
         public System.Drawing.Point move (System.Drawing.Point location)
         {
             if (EZInput.Keyboard.IsKeyPressed(Key.RightArrow) || EZInput.Keyboard.IsKeyPressed(Key.D))
             {
-                if (location.X + offSet < boundary.X)
+                if (location.X + offSetH < boundary.X)
                 {
                     location.X += speed;
                 }
             }
             if (EZInput.Keyboard.IsKeyPressed(Key.LeftArrow) || EZInput.Keyboard.IsKeyPressed(Key.A))
             {
-                if (location.X + offSet > offSet)
+                if (location.X - offSetH > 0)
                 {
                     location.X -= speed;
                 }
             }
             if (EZInput.Keyboard.IsKeyPressed(Key.UpArrow) || EZInput.Keyboard.IsKeyPressed(Key.W))
             {
-                if (location.Y + offSet > offSet)
+                if (location.Y > 0)
                 {
                     location.Y -= speed;
                 }
             }
             if (EZInput.Keyboard.IsKeyPressed(Key.DownArrow) || EZInput.Keyboard.IsKeyPressed(Key.S))
             {
-                if (location.Y + offSet < boundary.Y)
+                if (location.Y + offSetV < boundary.Y)
                 {
                     location.Y += speed;
                 }

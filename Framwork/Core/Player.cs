@@ -26,11 +26,10 @@ namespace Framwork.Core
         public List<Bullet> MyBullets { get => myBullets; set => myBullets = value; }
         public Image BulletImg { get => bulletImg; set => bulletImg = value; }
 
-        public void createBullet (Game g)
+        public void createBullet (Game g , IMovement movement , int top , int left)
         {
-            Bullet gO = new Bullet(BulletImg , 0 , 0 , new Gravity(10) , objectTypes.playerfire , PictureBoxSizeMode.StretchImage , bulletImg.Height / 2 , bulletImg.Width / 2);
-            gO.Pb.Top = base.Pb.Top + base.Pb.Height;
-            gO.Pb.Left = base.Pb.Left + (base.Pb.Width / 2);
+            Bullet gO = new Bullet(BulletImg , top , left , movement , objectTypes.playerfire , PictureBoxSizeMode.StretchImage , bulletImg.Height / 2 , bulletImg.Width / 2);
+            MyBullets.Add(gO);
             g.addGameObj(gO);
         }
         public void fireBullet ()
@@ -42,13 +41,19 @@ namespace Framwork.Core
         }
         public void rmvBullet (Game g)
         {
-            foreach (Bullet b in MyBullets)
+
+            for (int i = 0 ; i < myBullets.Count ; i++)
             {
-                if (b.Pb.Location.Y > 200)
+                if (myBullets[i].Pb.Location.Y > g.Boundary.Y && myBullets[i].Movement.GetType() == typeof(Gravity))
                 {
-                    g.rmvGameObj(b);
-                    this.MyBullets.Remove(b);
-                    break;
+                    g.rmvGameObj(myBullets[i]);
+                    this.myBullets.Remove(myBullets[i]);
+
+                }
+                else if (myBullets[i].Pb.Location.Y <= 0 && myBullets[i].Movement.GetType() == typeof(GravityInvert))
+                {
+                    g.rmvGameObj(myBullets[i]);
+                    this.myBullets.Remove(myBullets[i]);
                 }
             }
         }

@@ -51,8 +51,8 @@
     <Compile Include="Core\Player.cs" />
     <Compile Include="Enum\objectTypes.cs" />
     <Compile Include="Firing\Bullet.cs" />
-    <Compile Include="Firing\IFire.cs" />
     <Compile Include="Movement\Gravity.cs" />
+    <Compile Include="Movement\GravityInvert.cs" />
     <Compile Include="Movement\Horizontal.cs" />
     <Compile Include="Movement\IMovement.cs" />
     <Compile Include="Movement\Keyboard.cs" />

@@ -9,7 +9,7 @@ namespace Framwork.Collisions
 {
     public class PlayerCollision : ICollisionAction
     {
-        public void performAction (IGame game , GameObject source1 , GameObject source2)
+        public void performPlayerEnemyCollision (IGame game , GameObject source1 , GameObject source2)
         {
             GameObject player;
             if (source1.Type == Enum.objectTypes.player)
@@ -22,5 +22,19 @@ namespace Framwork.Collisions
             }
             game.RaisePlayerDieEvent(player);
         }
+        public void performPlayerScoreCollision (IGame game , GameObject source1 , GameObject source2)
+        {
+            GameObject player;
+            if (source1.Type == Enum.objectTypes.scorePill)
+            {
+                player = source1;
+            }
+            else
+            {
+                player = source2;
+            }
+            game.RaiseOnPlayerCollideScoreEvent(player);
+        }
+
     }
 }
