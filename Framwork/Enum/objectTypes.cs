@@ -16,6 +16,8 @@ namespace Framwork.Enum
         tankFire,
         healthPill,
         scorePill,
-        livesPill
+        livesPill,
+        boss,
+        bossFire,
     }
 }

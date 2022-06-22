@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Framwork.Movement;
 using Framwork.Core;
 namespace Framwork.Collisions
 {
-    public class PlayerCollision : ICollisionAction
+    public class PlayerCollisionScore : ICollisionAction
     {
         public void performPlayerAction (IGame game , GameObject source1 , GameObject source2)
         {
             GameObject player;
-            if (source1.Type == Enum.objectTypes.player)
+            if (source1.Type == Enum.objectTypes.scorePill)
             {
                 player = source1;
             }
@@ -20,9 +19,7 @@ namespace Framwork.Collisions
             {
                 player = source2;
             }
-            game.RaiseOnPlayerCollideEnemyEvent(player);
+            game.RaiseOnPlayerCollideScoreEvent(player);
         }
-
-
     }
 }

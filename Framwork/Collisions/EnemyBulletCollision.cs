@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Framwork.Movement;
 using Framwork.Core;
 namespace Framwork.Collisions
 {
-    public class PlayerCollision : ICollisionAction
+    public class EnemyBulletCollision : ICollisionAction
     {
         public void performPlayerAction (IGame game , GameObject source1 , GameObject source2)
         {
-            GameObject player;
+            GameObject chr;
+            GameObject bullet;
             if (source1.Type == Enum.objectTypes.player)
             {
-                player = source1;
+                chr = source1;
+                bullet = source2;
             }
             else
             {
-                player = source2;
+                chr = source2;
+                bullet = source1;
             }
-            game.RaiseOnPlayerCollideEnemyEvent(player);
+            game.rmvGameObj(bullet);
+            game.RaiseOnPlayerCollideEnemyBulletEvent(chr);
         }
-
-
     }
 }

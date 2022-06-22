@@ -42,15 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collisions\BossBulletCollision.cs" />
     <Compile Include="Collisions\Collision.cs" />
+    <Compile Include="Collisions\EnemyBulletCollision.cs" />
     <Compile Include="Collisions\ICollisionAction.cs" />
+    <Compile Include="Collisions\PlayerBulletCollision.cs" />
+    <Compile Include="Collisions\PlayerBulletCollisionBoss.cs" />
     <Compile Include="Collisions\PlayerCollision.cs" />
+    <Compile Include="Collisions\PlayerCollisionHealth.cs" />
+    <Compile Include="Collisions\PlayerCollisionScore.cs" />
     <Compile Include="Core\Game.cs" />
     <Compile Include="Core\GameObject.cs" />
     <Compile Include="Core\IGame.cs" />
     <Compile Include="Core\Player.cs" />
     <Compile Include="Enum\objectTypes.cs" />
     <Compile Include="Firing\Bullet.cs" />
+    <Compile Include="HealthSystem\ProgBar.cs" />
     <Compile Include="Movement\Gravity.cs" />
     <Compile Include="Movement\GravityInvert.cs" />
     <Compile Include="Movement\Horizontal.cs" />
@@ -64,6 +71,9 @@
     <PackageReference Include="EZInput">
       <Version>1.3.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
