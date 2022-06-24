@@ -253,17 +253,21 @@ namespace Framwork.Core
             {
                 for (int y = 0 ; y < gameObjList.Count ; y++)
                 {
-                    if (gameObjList[x].Pb.Bounds.IntersectsWith(gameObjList[y].Pb.Bounds))
+                    try
                     {
-                        foreach (Collision c in collisionList)
+                        if (gameObjList[x].Pb.Bounds.IntersectsWith(gameObjList[y].Pb.Bounds))
                         {
-                            if (gameObjList[x].Type == c.G1 && gameObjList[y].Type == c.G2)
+                            foreach (Collision c in collisionList)
                             {
-                                c.Behaviour.performPlayerAction(this , gameObjList[x] , gameObjList[y]);
-                                break;
+                                if (gameObjList[x].Type == c.G1 && gameObjList[y].Type == c.G2)
+                                {
+                                    c.Behaviour.performPlayerAction(this , gameObjList[x] , gameObjList[y]);
+                                    break;
+                                }
                             }
                         }
                     }
+                    catch(Exception e) { }
 
                 }
             }

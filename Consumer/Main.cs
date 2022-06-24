@@ -60,6 +60,7 @@ namespace Consumer
         private int gravityBullet = 6;
         bool flag = true;
         bool flag1 = true;
+        bool flagwin = true;
 
 
         public Game G { get => g; set => g = value; }
@@ -294,13 +295,16 @@ namespace Consumer
             boss?.rmvBullet(G);
             Hero.rmvBullet(G);
             G.update();
-            if (g.isWin())
+            if (g.isWin() && flag == false && flagwin == true)
             {
+                flagwin = false;
                 MessageBox.Show($"You Won, Score = {score.ToString()}");
                 gameLoop.Enabled = false;
+                this.Close();
             }
-            if (g.isGameOver())
+            if (g.isGameOver() && flagwin == true)
             {
+                flagwin = false;
                 MessageBox.Show($"You lost, Score = {score.ToString()}");
                 gameLoop.Enabled = false;
                 this.Close();

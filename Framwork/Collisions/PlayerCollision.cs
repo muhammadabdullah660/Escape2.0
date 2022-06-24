@@ -22,7 +22,5 @@ namespace Framwork.Collisions
             }
             game.RaiseOnPlayerCollideEnemyEvent(player);
         }
-
-
     }
 }

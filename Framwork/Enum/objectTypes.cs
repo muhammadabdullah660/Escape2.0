@@ -8,16 +8,6 @@ namespace Framwork.Enum
 {
     public enum objectTypes
     {
-        player,
-        tank,
-        road,
-        stairs,
-        playerfire,
-        tankFire,
-        healthPill,
-        scorePill,
-        livesPill,
-        boss,
-        bossFire,
+        player,tank,road,stairs,playerfire,tankFire,healthPill,scorePill,livesPill,boss,bossFire,
     }
 }
